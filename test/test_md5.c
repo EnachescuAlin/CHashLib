@@ -2,10 +2,14 @@
 #include <stdio.h>
 #include <string.h>
 
+#include "linux_color.h"
+
 typedef struct {
     const char *string;
     const char *hash;
 } test_case_t;
+
+#define TEST_NAME "test md5"
 
 int test_md5()
 {
@@ -29,10 +33,10 @@ int test_md5()
     }
 
     if (failed == 0) {
-        printf("test md5 - OK\n");
+        printf("%-40s " COLOR_TEXT("OK", COLOR_GREEN) "\n", TEST_NAME);
         return 0;
     }
 
-    printf("test md5 - FAILED\n");
+    printf("%-40s " COLOR_TEXT("FAILED", COLOR_RED) "\n", TEST_NAME);
 	return 1;
 }
