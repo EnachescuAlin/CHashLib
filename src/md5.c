@@ -1,6 +1,6 @@
 #include "md5.h"
 
-#include "string.h"
+#include <string.h>
 
 static uint32_t CHashLib_md5_precomputed_table[64] = {
     0xd76aa478, 0xe8c7b756, 0x242070db, 0xc1bdceee,
