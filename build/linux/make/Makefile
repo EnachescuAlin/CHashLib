@@ -7,7 +7,9 @@ SRC_DIR = ../../../src
 TEST_DIR = ../../../test
 BIN_DIR = ../../../bin/linux/make/$(CONFIG)
 
-LIB_OBJ = md5.o
+_LIB_OBJ = md5.o
+LIB_OBJ = $(patsubst %,$(BIN_DIR)/%,$(_LIB_OBJ))
+
 TEST_OBJ = CHashLib_test.o test_md5.o
 
 SHARED = false
@@ -58,9 +60,8 @@ SHARED = true
 SOFLAGS = -fPIC
 endif
 
-md5.o:
-	$(CC) -c -o $(BIN_DIR)/md5.o $(SRC_DIR)/md5.c \
-	$(CFLAGS) $(SOFLAGS) $(PLATFORM) $(EXTRA_FLAGS) $(INCLUDE_PATH)
+$(BIN_DIR)/%.o: $(SRC_DIR)/%.c
+	$(CC) -c -o $@ $< $(CFLAGS) $(SOFLAGS) $(PLATFORM) $(EXTRA_FLAGS) $(INCLUDE_PATH)
 
 CHashLib_test.o:
 	$(CC) -c -o $(BIN_DIR)/CHashLib_test.o $(TEST_DIR)/CHashLib_test.c \
@@ -72,9 +73,9 @@ test_md5.o:
 
 build_lib:
 ifeq ($(SHARED),false)
-	ar rcs $(BIN_DIR)/libCHashLib.a $(BIN_DIR)/md5.o
+	ar rcs $(BIN_DIR)/libCHashLib.a $(LIB_OBJ)
 else
-	$(CC) -shared $(PLATFORM) $(BIN_DIR)/md5.o -o $(BIN_DIR)/libCHashLib.so
+	$(CC) -shared $(PLATFORM) $(LIB_OBJ) -o $(BIN_DIR)/libCHashLib.so
 endif
 
 build_test:
