@@ -153,18 +153,12 @@ static void CHashLib_MD5_process_chunk(CHashLib_md5_ctx_t *ctx)
     ctx->d0 += tmp_d0;
 }
 
-static void CHashLib_MD5_uint32_to_hex(uint32_t value, char *buffer)
+static void CHashLib_MD5_encode_uint32(uint32_t value, unsigned char *buffer)
 {
-    static const char hexChars[] = "0123456789abcdef";
-
-    buffer[0] = hexChars[(value >>  4) & 0xF];
-    buffer[1] = hexChars[(value >>  0) & 0xF];
-    buffer[2] = hexChars[(value >> 12) & 0xF];
-    buffer[3] = hexChars[(value >>  8) & 0xF];
-    buffer[4] = hexChars[(value >> 20) & 0xF];
-    buffer[5] = hexChars[(value >> 16) & 0xF];
-    buffer[6] = hexChars[(value >> 28) & 0xF];
-    buffer[7] = hexChars[(value >> 24) & 0xF];
+    buffer[0] = (unsigned char) ((value >>  0) & 0xFF);
+    buffer[1] = (unsigned char) ((value >>  8) & 0xFF);
+    buffer[2] = (unsigned char) ((value >> 16) & 0xFF);
+    buffer[3] = (unsigned char) ((value >> 24) & 0xFF);
 }
 
 void CHashLib_MD5_init(CHashLib_md5_ctx_t *ctx)
@@ -198,15 +192,13 @@ void CHashLib_MD5_update(CHashLib_md5_ctx_t *ctx, const unsigned char *data, siz
     }
 }
 
-void CHashLib_MD5_final(CHashLib_md5_ctx_t *ctx, char output[32])
+void CHashLib_MD5_final(CHashLib_md5_ctx_t *ctx, unsigned char output[16])
 {
     // prepare original length in bits
     unsigned char bitsArray[8];
     uint64_t bits = ctx->length << 3;
-    uint32_t index;
-    for (index = 0; index < 8; index++) {
-        bitsArray[index] = (bits >> (index * 8)) & 0xff;
-    }
+    CHashLib_MD5_encode_uint32((uint32_t) (bits >>  0), bitsArray + 0);
+    CHashLib_MD5_encode_uint32((uint32_t) (bits >> 32), bitsArray + 4);
 
     // append padding
     uint32_t currentPos = ctx->length & 63;
@@ -217,13 +209,13 @@ void CHashLib_MD5_final(CHashLib_md5_ctx_t *ctx, char output[32])
     CHashLib_MD5_update(ctx, bitsArray, 8);
 
     // store the hash in hex
-    CHashLib_MD5_uint32_to_hex(ctx->a0, output +  0);
-    CHashLib_MD5_uint32_to_hex(ctx->b0, output +  8);
-    CHashLib_MD5_uint32_to_hex(ctx->c0, output + 16);
-    CHashLib_MD5_uint32_to_hex(ctx->d0, output + 24);
+    CHashLib_MD5_encode_uint32(ctx->a0, output +  0);
+    CHashLib_MD5_encode_uint32(ctx->b0, output +  4);
+    CHashLib_MD5_encode_uint32(ctx->c0, output +  8);
+    CHashLib_MD5_encode_uint32(ctx->d0, output + 12);
 }
 
-void CHashLib_MD5_hash(const unsigned char *data, size_t length, char output[32])
+void CHashLib_MD5_hash(const unsigned char *data, size_t length, unsigned char output[16])
 {
     CHashLib_md5_ctx_t ctx;
 

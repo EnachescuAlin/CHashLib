@@ -23,13 +23,13 @@ void CHashLib_MD5_update(
 
 void CHashLib_MD5_final(
     CHashLib_md5_ctx_t *ctx,
-    char output[32]
+    unsigned char output[16]
 );
 
 void CHashLib_MD5_hash(
     const unsigned char *data,
     size_t length,
-    char output[32]
+    unsigned char output[16]
 );
 
 #endif

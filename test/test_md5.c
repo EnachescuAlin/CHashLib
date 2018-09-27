@@ -3,6 +3,7 @@
 #include <string.h>
 
 #include "linux_color.h"
+#include "util.h"
 
 typedef struct {
     const char *string;
@@ -14,12 +15,13 @@ typedef struct {
 int test_md5()
 {
     static test_case_t testCases[] = {
-        { "", "d41d8cd98f00b204e9800998ecf8427e" }
+        { "", "d41d8cd98f00b204e9800998ecf8427e" },
     };
 
     int failed = 0;
     size_t i = 0;
-    char hash[33] = { 0 };
+    unsigned char hash[16];
+    char hashStr[33] = { 0 };
 
     for (; i < (sizeof(testCases) / sizeof(test_case_t)); i++) {
         CHashLib_MD5_hash(
@@ -27,7 +29,8 @@ int test_md5()
             strlen(testCases[i].string),
             hash
         );
-        if (memcmp(hash, testCases[i].hash, 33) != 0) {
+        BufferToHex(hash, 16, hashStr, 33);
+        if (strcmp(hashStr, testCases[i].hash) != 0) {
             failed++;
         }
     }
@@ -37,6 +40,6 @@ int test_md5()
         return 0;
     }
 
-    printf("%-40s " COLOR_TEXT("FAILED", COLOR_RED) "\n", TEST_NAME);
+    printf("%-36s " COLOR_TEXT("FAILED", COLOR_RED) "\n", TEST_NAME);
 	return 1;
 }
