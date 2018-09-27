@@ -10,7 +10,8 @@ BIN_DIR = ../../../bin/linux/make/$(CONFIG)
 _LIB_OBJ = md5.o
 LIB_OBJ = $(patsubst %,$(BIN_DIR)/%,$(_LIB_OBJ))
 
-TEST_OBJ = CHashLib_test.o test_md5.o
+_TEST_OBJ = CHashLib_test.o test_md5.o
+TEST_OBJ = $(patsubst %,$(BIN_DIR)/%,$(_TEST_OBJ))
 
 SHARED = false
 
@@ -63,13 +64,8 @@ endif
 $(BIN_DIR)/%.o: $(SRC_DIR)/%.c
 	$(CC) -c -o $@ $< $(CFLAGS) $(SOFLAGS) $(PLATFORM) $(EXTRA_FLAGS) $(INCLUDE_PATH)
 
-CHashLib_test.o:
-	$(CC) -c -o $(BIN_DIR)/CHashLib_test.o $(TEST_DIR)/CHashLib_test.c \
-	$(CFLAGS) $(PLATFORM) $(EXTRA_FLAGS) $(INCLUDE_PATH)
-
-test_md5.o:
-	$(CC) -c -o $(BIN_DIR)/test_md5.o $(TEST_DIR)/test_md5.c \
-	$(CFLAGS) $(PLATFORM) $(EXTRA_FLAGS) $(INCLUDE_PATH)
+$(BIN_DIR)/%.o: $(TEST_DIR)/%.c
+	$(CC) -c -o $@ $< $(CFLAGS) $(PLATFORM) $(EXTRA_FLAGS) $(INCLUDE_PATH)
 
 build_lib:
 ifeq ($(SHARED),false)
@@ -79,13 +75,7 @@ else
 endif
 
 build_test:
-ifeq ($(SHARED),false)
-	$(CC) $(BIN_DIR)/CHashLib_test.o $(BIN_DIR)/test_md5.o \
-	$(PLATFORM) -L$(BIN_DIR) -lCHashLib -o $(BIN_DIR)/CHashLib_test
-else
-	$(CC) $(BIN_DIR)/CHashLib_test.o $(BIN_DIR)/test_md5.o \
-	$(PLATFORM) -L$(BIN_DIR) -lCHashLib -o $(BIN_DIR)/CHashLib_test
-endif
+	$(CC) $(TEST_OBJ) $(PLATFORM) -L$(BIN_DIR) -lCHashLib -o $(BIN_DIR)/CHashLib_test
 
 build: prepare_env $(LIB_OBJ) $(TEST_OBJ) build_lib build_test
 	$(info ***** build completed successfully *****)
