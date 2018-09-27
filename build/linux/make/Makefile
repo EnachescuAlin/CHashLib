@@ -10,7 +10,7 @@ BIN_DIR = ../../../bin/linux/make/$(CONFIG)
 _LIB_OBJ = md5.o
 LIB_OBJ = $(patsubst %,$(BIN_DIR)/%,$(_LIB_OBJ))
 
-_TEST_OBJ = CHashLib_test.o test_md5.o
+_TEST_OBJ = CHashLib_test.o test_md5.o util.o
 TEST_OBJ = $(patsubst %,$(BIN_DIR)/%,$(_TEST_OBJ))
 
 SHARED = false
