@@ -185,5 +185,5 @@ int test_md5()
     }
 
     printf("%-36s " COLOR_TEXT("FAILED", COLOR_RED) "\n", TEST_NAME);
-	return 1;
+    return 1;
 }
