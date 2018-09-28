@@ -7,7 +7,7 @@ SRC_DIR = ../../../src
 TEST_DIR = ../../../test
 BIN_DIR = ../../../bin/linux/make/$(CONFIG)
 
-_LIB_OBJ = md5.o
+_LIB_OBJ = md5.o utils.o
 LIB_OBJ = $(patsubst %,$(BIN_DIR)/%,$(_LIB_OBJ))
 
 _TEST_OBJ = CHashLib_test.o test_md5.o util.o
