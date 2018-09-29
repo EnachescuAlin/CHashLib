@@ -3,6 +3,7 @@
 
 int test_md5();
 int test_md4();
+int test_md2();
 
 int main()
 {
@@ -12,6 +13,7 @@ int main()
 
     ret += test_md5();
     ret += test_md4();
+    ret += test_md2();
 
     printf(COLOR_TEXT("*******************************************", COLOR_BLUE) "\n");
 
