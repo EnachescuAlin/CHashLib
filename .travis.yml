@@ -7,14 +7,14 @@ matrix:
     - os: linux
       env: TARGET=x86_64-unknown-linux-gnu
     - os: linux
-      env: TARGET=mips-unknown-linux-gnu
-      apt:
-        sources:
-          - sourceline: "deb http://archive.ubuntu.com/ubuntu/ xenial main universe"
-        packages:
-          - gcc-mips-linux-gnu
-          - libc6-dev-mips-cross
-          - qemu-user-binfmt
+      env:
+        - EXEC="qemu-mips"
+      install:
+        - sudo add-apt-repository -y "deb http://archive.ubuntu.com/ubuntu/ xenial main universe"
+        - sudo apt-get -qq update
+        - sudo apt-get install gcc-mips-linux-gnu qemu-user
+        - mips-linux-gnu-gcc --version
+        - qemu-mips -version
 
 script:
   - make -C build/linux/make/ clean
