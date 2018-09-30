@@ -2,6 +2,7 @@ CC = gcc
 INCLUDE_PATH = -I../../../include
 CFLAGS = -Wall -Wextra
 SOFLAGS =
+TESTER_FLAGS ?=
 
 SRC_DIR = ../../../src
 TEST_DIR = ../../../test
@@ -65,7 +66,7 @@ $(BIN_DIR)/%.o: $(SRC_DIR)/%.c
 	$(CC) -c -o $@ $< $(CFLAGS) $(SOFLAGS) $(PLATFORM) $(EXTRA_FLAGS) $(INCLUDE_PATH)
 
 $(BIN_DIR)/%.o: $(TEST_DIR)/%.c
-	$(CC) -c -o $@ $< $(CFLAGS) $(PLATFORM) $(EXTRA_FLAGS) $(INCLUDE_PATH)
+	$(CC) -c -o $@ $< $(CFLAGS) $(TESTER_FLAGS) $(PLATFORM) $(EXTRA_FLAGS) $(INCLUDE_PATH)
 
 build_lib:
 ifeq ($(SHARED),false)
