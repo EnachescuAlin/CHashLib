@@ -1,0 +1,7 @@
+language: c
+compiler: gcc
+sudo: required
+
+script:
+    - make -C build/linux/make/ clean
+    - make -C build/linux/make/ CONFIG=release_64_static build
