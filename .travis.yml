@@ -6,6 +6,7 @@ sudo: required
 matrix:
   include:
     - env: TARGET=x86_64-unknown-linux-gnu
+    - env: TARGET=mips-unknown-linux-gnu
 
 script:
   - make -C build/linux/make/ clean
