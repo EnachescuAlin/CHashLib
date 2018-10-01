@@ -8,7 +8,7 @@ typedef struct
 {
     unsigned char buffer[64];
     uint64_t length;
-    uint32_t a0, b0, c0, d0;
+    uint32_t a, b, c, d;
 } CHashLib_md5_ctx_t;
 
 void CHashLib_MD5_init(

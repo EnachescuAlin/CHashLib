@@ -23,68 +23,68 @@
 
 static void CHashLib_MD4_process_chunk(CHashLib_md4_ctx_t *ctx)
 {
-    uint32_t tmp_a0 = ctx->a0;
-    uint32_t tmp_b0 = ctx->b0;
-    uint32_t tmp_c0 = ctx->c0;
-    uint32_t tmp_d0 = ctx->d0;
+    uint32_t tmp_a = ctx->a;
+    uint32_t tmp_b = ctx->b;
+    uint32_t tmp_c = ctx->c;
+    uint32_t tmp_d = ctx->d;
 
     uint32_t *buffer = (uint32_t*) ctx->buffer;
 
-    R0(tmp_a0, tmp_b0, tmp_c0, tmp_d0,  0,  3, buffer);
-    R0(tmp_d0, tmp_a0, tmp_b0, tmp_c0,  1,  7, buffer);
-    R0(tmp_c0, tmp_d0, tmp_a0, tmp_b0,  2, 11, buffer);
-    R0(tmp_b0, tmp_c0, tmp_d0, tmp_a0,  3, 19, buffer);
-    R0(tmp_a0, tmp_b0, tmp_c0, tmp_d0,  4,  3, buffer);
-    R0(tmp_d0, tmp_a0, tmp_b0, tmp_c0,  5,  7, buffer);
-    R0(tmp_c0, tmp_d0, tmp_a0, tmp_b0,  6, 11, buffer);
-    R0(tmp_b0, tmp_c0, tmp_d0, tmp_a0,  7, 19, buffer);
-    R0(tmp_a0, tmp_b0, tmp_c0, tmp_d0,  8,  3, buffer);
-    R0(tmp_d0, tmp_a0, tmp_b0, tmp_c0,  9,  7, buffer);
-    R0(tmp_c0, tmp_d0, tmp_a0, tmp_b0, 10, 11, buffer);
-    R0(tmp_b0, tmp_c0, tmp_d0, tmp_a0, 11, 19, buffer);
-    R0(tmp_a0, tmp_b0, tmp_c0, tmp_d0, 12,  3, buffer);
-    R0(tmp_d0, tmp_a0, tmp_b0, tmp_c0, 13,  7, buffer);
-    R0(tmp_c0, tmp_d0, tmp_a0, tmp_b0, 14, 11, buffer);
-    R0(tmp_b0, tmp_c0, tmp_d0, tmp_a0, 15, 19, buffer);
+    R0(tmp_a, tmp_b, tmp_c, tmp_d,  0,  3, buffer);
+    R0(tmp_d, tmp_a, tmp_b, tmp_c,  1,  7, buffer);
+    R0(tmp_c, tmp_d, tmp_a, tmp_b,  2, 11, buffer);
+    R0(tmp_b, tmp_c, tmp_d, tmp_a,  3, 19, buffer);
+    R0(tmp_a, tmp_b, tmp_c, tmp_d,  4,  3, buffer);
+    R0(tmp_d, tmp_a, tmp_b, tmp_c,  5,  7, buffer);
+    R0(tmp_c, tmp_d, tmp_a, tmp_b,  6, 11, buffer);
+    R0(tmp_b, tmp_c, tmp_d, tmp_a,  7, 19, buffer);
+    R0(tmp_a, tmp_b, tmp_c, tmp_d,  8,  3, buffer);
+    R0(tmp_d, tmp_a, tmp_b, tmp_c,  9,  7, buffer);
+    R0(tmp_c, tmp_d, tmp_a, tmp_b, 10, 11, buffer);
+    R0(tmp_b, tmp_c, tmp_d, tmp_a, 11, 19, buffer);
+    R0(tmp_a, tmp_b, tmp_c, tmp_d, 12,  3, buffer);
+    R0(tmp_d, tmp_a, tmp_b, tmp_c, 13,  7, buffer);
+    R0(tmp_c, tmp_d, tmp_a, tmp_b, 14, 11, buffer);
+    R0(tmp_b, tmp_c, tmp_d, tmp_a, 15, 19, buffer);
 
-    R1(tmp_a0, tmp_b0, tmp_c0, tmp_d0,  0,  3, buffer);
-    R1(tmp_d0, tmp_a0, tmp_b0, tmp_c0,  4,  5, buffer);
-    R1(tmp_c0, tmp_d0, tmp_a0, tmp_b0,  8,  9, buffer);
-    R1(tmp_b0, tmp_c0, tmp_d0, tmp_a0, 12, 13, buffer);
-    R1(tmp_a0, tmp_b0, tmp_c0, tmp_d0,  1,  3, buffer);
-    R1(tmp_d0, tmp_a0, tmp_b0, tmp_c0,  5,  5, buffer);
-    R1(tmp_c0, tmp_d0, tmp_a0, tmp_b0,  9,  9, buffer);
-    R1(tmp_b0, tmp_c0, tmp_d0, tmp_a0, 13, 13, buffer);
-    R1(tmp_a0, tmp_b0, tmp_c0, tmp_d0,  2,  3, buffer);
-    R1(tmp_d0, tmp_a0, tmp_b0, tmp_c0,  6,  5, buffer);
-    R1(tmp_c0, tmp_d0, tmp_a0, tmp_b0, 10,  9, buffer);
-    R1(tmp_b0, tmp_c0, tmp_d0, tmp_a0, 14, 13, buffer);
-    R1(tmp_a0, tmp_b0, tmp_c0, tmp_d0,  3,  3, buffer);
-    R1(tmp_d0, tmp_a0, tmp_b0, tmp_c0,  7,  5, buffer);
-    R1(tmp_c0, tmp_d0, tmp_a0, tmp_b0, 11,  9, buffer);
-    R1(tmp_b0, tmp_c0, tmp_d0, tmp_a0, 15, 13, buffer);
+    R1(tmp_a, tmp_b, tmp_c, tmp_d,  0,  3, buffer);
+    R1(tmp_d, tmp_a, tmp_b, tmp_c,  4,  5, buffer);
+    R1(tmp_c, tmp_d, tmp_a, tmp_b,  8,  9, buffer);
+    R1(tmp_b, tmp_c, tmp_d, tmp_a, 12, 13, buffer);
+    R1(tmp_a, tmp_b, tmp_c, tmp_d,  1,  3, buffer);
+    R1(tmp_d, tmp_a, tmp_b, tmp_c,  5,  5, buffer);
+    R1(tmp_c, tmp_d, tmp_a, tmp_b,  9,  9, buffer);
+    R1(tmp_b, tmp_c, tmp_d, tmp_a, 13, 13, buffer);
+    R1(tmp_a, tmp_b, tmp_c, tmp_d,  2,  3, buffer);
+    R1(tmp_d, tmp_a, tmp_b, tmp_c,  6,  5, buffer);
+    R1(tmp_c, tmp_d, tmp_a, tmp_b, 10,  9, buffer);
+    R1(tmp_b, tmp_c, tmp_d, tmp_a, 14, 13, buffer);
+    R1(tmp_a, tmp_b, tmp_c, tmp_d,  3,  3, buffer);
+    R1(tmp_d, tmp_a, tmp_b, tmp_c,  7,  5, buffer);
+    R1(tmp_c, tmp_d, tmp_a, tmp_b, 11,  9, buffer);
+    R1(tmp_b, tmp_c, tmp_d, tmp_a, 15, 13, buffer);
 
-    R2(tmp_a0, tmp_b0, tmp_c0, tmp_d0,  0,  3, buffer);
-    R2(tmp_d0, tmp_a0, tmp_b0, tmp_c0,  8,  9, buffer);
-    R2(tmp_c0, tmp_d0, tmp_a0, tmp_b0,  4, 11, buffer);
-    R2(tmp_b0, tmp_c0, tmp_d0, tmp_a0, 12, 15, buffer);
-    R2(tmp_a0, tmp_b0, tmp_c0, tmp_d0,  2,  3, buffer);
-    R2(tmp_d0, tmp_a0, tmp_b0, tmp_c0, 10,  9, buffer);
-    R2(tmp_c0, tmp_d0, tmp_a0, tmp_b0,  6, 11, buffer);
-    R2(tmp_b0, tmp_c0, tmp_d0, tmp_a0, 14, 15, buffer);
-    R2(tmp_a0, tmp_b0, tmp_c0, tmp_d0,  1,  3, buffer);
-    R2(tmp_d0, tmp_a0, tmp_b0, tmp_c0,  9,  9, buffer);
-    R2(tmp_c0, tmp_d0, tmp_a0, tmp_b0,  5, 11, buffer);
-    R2(tmp_b0, tmp_c0, tmp_d0, tmp_a0, 13, 15, buffer);
-    R2(tmp_a0, tmp_b0, tmp_c0, tmp_d0,  3,  3, buffer);
-    R2(tmp_d0, tmp_a0, tmp_b0, tmp_c0, 11,  9, buffer);
-    R2(tmp_c0, tmp_d0, tmp_a0, tmp_b0,  7, 11, buffer);
-    R2(tmp_b0, tmp_c0, tmp_d0, tmp_a0, 15, 15, buffer);
+    R2(tmp_a, tmp_b, tmp_c, tmp_d,  0,  3, buffer);
+    R2(tmp_d, tmp_a, tmp_b, tmp_c,  8,  9, buffer);
+    R2(tmp_c, tmp_d, tmp_a, tmp_b,  4, 11, buffer);
+    R2(tmp_b, tmp_c, tmp_d, tmp_a, 12, 15, buffer);
+    R2(tmp_a, tmp_b, tmp_c, tmp_d,  2,  3, buffer);
+    R2(tmp_d, tmp_a, tmp_b, tmp_c, 10,  9, buffer);
+    R2(tmp_c, tmp_d, tmp_a, tmp_b,  6, 11, buffer);
+    R2(tmp_b, tmp_c, tmp_d, tmp_a, 14, 15, buffer);
+    R2(tmp_a, tmp_b, tmp_c, tmp_d,  1,  3, buffer);
+    R2(tmp_d, tmp_a, tmp_b, tmp_c,  9,  9, buffer);
+    R2(tmp_c, tmp_d, tmp_a, tmp_b,  5, 11, buffer);
+    R2(tmp_b, tmp_c, tmp_d, tmp_a, 13, 15, buffer);
+    R2(tmp_a, tmp_b, tmp_c, tmp_d,  3,  3, buffer);
+    R2(tmp_d, tmp_a, tmp_b, tmp_c, 11,  9, buffer);
+    R2(tmp_c, tmp_d, tmp_a, tmp_b,  7, 11, buffer);
+    R2(tmp_b, tmp_c, tmp_d, tmp_a, 15, 15, buffer);
 
-    ctx->a0 += tmp_a0;
-    ctx->b0 += tmp_b0;
-    ctx->c0 += tmp_c0;
-    ctx->d0 += tmp_d0;
+    ctx->a += tmp_a;
+    ctx->b += tmp_b;
+    ctx->c += tmp_c;
+    ctx->d += tmp_d;
 }
 
 void CHashLib_MD4_init(CHashLib_md4_ctx_t *ctx)
@@ -92,10 +92,10 @@ void CHashLib_MD4_init(CHashLib_md4_ctx_t *ctx)
     memset(ctx->buffer, 0, 64);
     ctx->length = 0;
 
-    ctx->a0 = 0x67452301;
-    ctx->b0 = 0xefcdab89;
-    ctx->c0 = 0x98badcfe;
-    ctx->d0 = 0x10325476;
+    ctx->a = 0x67452301;
+    ctx->b = 0xefcdab89;
+    ctx->c = 0x98badcfe;
+    ctx->d = 0x10325476;
 }
 
 void CHashLib_MD4_update(CHashLib_md4_ctx_t *ctx, const unsigned char *data, size_t length)
@@ -135,10 +135,10 @@ void CHashLib_MD4_final(CHashLib_md4_ctx_t *ctx, unsigned char output[16])
     CHashLib_MD4_update(ctx, bitsArray, 8);
 
     // store the hash in hex
-    CHashLib_encode_uint32(ctx->a0, output +  0);
-    CHashLib_encode_uint32(ctx->b0, output +  4);
-    CHashLib_encode_uint32(ctx->c0, output +  8);
-    CHashLib_encode_uint32(ctx->d0, output + 12);
+    CHashLib_encode_uint32(ctx->a, output +  0);
+    CHashLib_encode_uint32(ctx->b, output +  4);
+    CHashLib_encode_uint32(ctx->c, output +  8);
+    CHashLib_encode_uint32(ctx->d, output + 12);
 }
 
 void CHashLib_MD4_hash(const unsigned char *data, size_t length, unsigned char output[16])
