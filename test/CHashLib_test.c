@@ -9,6 +9,7 @@
 int test_md5();
 int test_md4();
 int test_md2();
+int test_sha0();
 
 int get_endian_type()
 {
@@ -43,6 +44,7 @@ int main()
     ret += test_md5();
     ret += test_md4();
     ret += test_md2();
+    ret += test_sha0();
 
 end:
     printf(COLOR_TEXT("*******************************************", COLOR_BLUE) "\n");
